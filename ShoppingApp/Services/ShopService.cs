@@ -12,6 +12,7 @@ public class ShopService
     }
 
     List<Item> itemList = new ();
+    List<Item> saleItemList = new ();
 
     public async Task<List<Item>> GetItems()
     {
@@ -32,16 +33,9 @@ public class ShopService
 
     public async Task<List<Item>> GetSaleItems()
     {
-        if (itemList?.Count > 0)
+        if (saleItemList?.Count > 0)
         {
-            for (int i = itemList.Count() - 1; i >= 0; i--)
-            {
-                if (!itemList[i].OnSale)
-                {
-                    itemList.RemoveAt(i);
-                }
-            }
-            return itemList;
+            return saleItemList;
         }
             
         var url = "https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/itemData.json";
@@ -49,17 +43,17 @@ public class ShopService
 
         if (response.IsSuccessStatusCode)
         {
-            itemList = await response.Content.ReadFromJsonAsync<List<Item>>();
+            saleItemList = await response.Content.ReadFromJsonAsync<List<Item>>();
         }
 
-        for(int i = itemList.Count() -1; i >= 0; i--)
+        for(int i = saleItemList.Count() -1; i >= 0; i--)
         {
-            if (!itemList[i].OnSale)
+            if (!saleItemList[i].OnSale)
             {
-                itemList.RemoveAt(i);
+                saleItemList.RemoveAt(i);
             }
         }
 
-        return itemList;
+        return saleItemList;
     }
 }

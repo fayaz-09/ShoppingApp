@@ -11,7 +11,7 @@ public partial class ItemViewModel : BaseViewModel
     
     public ItemViewModel(ShopService shopService)
     {
-        Title = "Shopping";
+        Title = "Shop";
         this.shopService = shopService;
     }
 
