@@ -6,6 +6,8 @@ public partial class ItemViewModel : BaseViewModel
     ShopService shopService;
     public ObservableCollection<Item> Items { get; } = new();
 
+    public ObservableCollection<Item> SaleItems { get; } = new();
+
     
     public ItemViewModel(ShopService shopService)
     {
@@ -25,12 +27,19 @@ public partial class ItemViewModel : BaseViewModel
            
             IsBusy = true;
             var items = await shopService.GetItems();
+            var saleItems = await shopService.GetSaleItems();
 
             if (Items.Count != 0)
+            {
                 Items.Clear();
-
+                SaleItems.Clear();
+            }
+            
             foreach (var item in items)
                 Items.Add(item);
+
+            foreach (var item in saleItems)
+                SaleItems.Add(item);
         }
         catch (Exception ex)
         {

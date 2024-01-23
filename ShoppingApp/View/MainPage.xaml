@@ -13,7 +13,7 @@
           RowSpacing="0">
        
         <CollectionView Background="Transparent"
-                        ItemsSource="{Binding Items}"
+                        ItemsSource="{Binding SaleItems}"
                         Grid.ColumnSpan="2"
                         SelectionMode="None">
             <CollectionView.ItemTemplate>
