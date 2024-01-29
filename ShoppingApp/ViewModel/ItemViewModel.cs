@@ -1,4 +1,5 @@
 ﻿using ShoppingApp.Services;
+using ShoppingApp.View;
 namespace ShoppingApp.ViewModel;
 
 public partial class ItemViewModel : BaseViewModel
@@ -15,6 +16,21 @@ public partial class ItemViewModel : BaseViewModel
         this.shopService = shopService;
     }
 
+    [RelayCommand]
+    async Task GoToDetailsAsync(Item item)
+    {
+        if(item is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", true,
+            new Dictionary<string, object>
+            {
+                {"Item", item}
+            });
+
+    }
 
     [RelayCommand]
     async Task GetItemsAsync()

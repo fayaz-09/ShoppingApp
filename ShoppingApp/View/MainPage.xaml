@@ -36,27 +36,51 @@
                 <CollectionView.ItemsSource>
                     <x:Array Type="{x:Type model:Item}">
                         <model:Item
-                            ItemName="Kellog's Rice Krispies (430g)"
+                            ItemName= "Kellog's Rice Krispies (430g)"
+                            Description="Toasted Rice Cereal Fortified with Vitamins and Iron. Enjoy as part of a varied balanced diet and a healthy lifestyle."
+                            Image="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/RiceCrisp.jpeg"
+                            Category="Cereal"
                             Price="3.30"
-                            Image="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/RiceCrisp.jpeg"/>
+                            InStock="True"
+                            OnSale="False"
+                            Discount= "0.0"/>
                         <model:Item
-                            ItemName="Semi skimmed milk 4 pint"
-                            Price="1.90"
-                            Image="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/semiMilk.jpg"/>
+                            ItemName= "Semi skimmed milk 4 pint"
+                            Description= "Pasteurised homogenised semi skimmed milk. Milk from British Farms"
+                            Image= "https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/semiMilk.jpg"
+                            Category= "Milk"
+                            Price="1.90" 
+                            InStock="true"
+                            OnSale="false"
+                            Discount="0.0"/>
                         <model:Item
                             ItemName="Walkers Cheese and Onion Multipack Crisps 12x25g"
+                            Description="Cheese and Onion Flavour Potato Crisps - Multipack of Walkers Cheese and Onion crisps - Made with 100% Great British Potatoes - Fresh taste guaranteed - Perfect crisps for lunch and snacking - Multipack contains 12 bags of crisps - Suitable for vegetarians"
+                            Image="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/walkCheese.jpg"
+                            Category="Crisps"
                             Price="3.20"
-                            Image="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/walkCheese.jpg"/>
+                            InStock="True"
+                            OnSale="True"
+                            Discount="0.40"/>
                         <model:Item
                             ItemName="Gala Apple 6 Pack"
+                            Description="Sweet and Juicy Hand picked apples. Pack of 6 apples of the highest standard with a sweet and juicy flavour."
+                            Image="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/galaApple.jpg"
+                            Category="Fruit"
                             Price="1.75"
-                            Image="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/galaApple.jpg"/>
+                            InStock="true"
+                            OnSale="false"
+                            Discount="0.0"/>
                     </x:Array>
                 </CollectionView.ItemsSource>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Item">
                         <Grid Padding="10">
                             <Frame HeightRequest="125">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToDetailsCommand}"/>
+                                </Frame.GestureRecognizers>
                                 <Grid Padding="0"
                                       ColumnDefinitions="125, *">
                                     <Image Aspect="AspectFit"
