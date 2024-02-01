@@ -6,6 +6,7 @@ public partial class DetailsPage : ContentPage
     {
         InitializeComponent();
         BindingContext = viewModel;
+        viewModel.GetItemsCommand.Execute(this);
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs args)

@@ -13,6 +13,7 @@ public class ShopService
 
     List<Item> itemList = new ();
     List<Item> saleItemList = new ();
+    List<CartItem> cartItems = new ();
 
     public async Task<List<Item>> GetItems()
     {
@@ -55,5 +56,29 @@ public class ShopService
         }
 
         return saleItemList;
+    }
+
+    public void AddToCart(Item item, int quantity)
+    {
+        CartItem cartItem = new CartItem ();
+        cartItem.ItemName = item.ItemName;
+        cartItem.Image = item.Image;
+        cartItem.Price = item.Price;
+        cartItem.Quantity = quantity;
+        cartItems.Add(cartItem);
+    }
+
+    public void RemoveFromCart(CartItem item)
+    {
+        var location = cartItems.Find(x => x.ItemName.Contains(item.ItemName));
+        if (location != null) 
+        {
+            cartItems.Remove(location);
+        }
+    }
+
+    public List<CartItem> GetCartItems()
+    {
+        return cartItems;
     }
 }

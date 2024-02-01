@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShoppingApp.View.DetailsPage"
+             xmlns:model="clr-namespace:ShoppingApp.Model"
+             xmlns:viewmodel="clr-namespace:ShoppingApp.ViewModel"
+             x:DataType="viewmodel:ItemDetailsViewModel"
              Title="{Binding Title}">
 
     
@@ -56,9 +59,52 @@
 
                 <Button Text="Add to basket"
                         Grid.Row="6"
-                        Grid.ColumnSpan="3"/>
+                        Grid.ColumnSpan="3"
+                        Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:ItemDetailsViewModel}} ,Path=addToBasketCommand}"
+                        CommandParameter="{Binding Item}"/>
                 
             </Grid>
+
+
+            <CollectionView Background="Transparent"
+                ItemsSource="{Binding Items}"
+                Grid.ColumnSpan="2"
+                Grid.Row="2"
+                SelectionMode="None">
+    <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="model:Item">
+            <Grid Padding="10">
+                <Frame HeightRequest="125">
+                    <Grid Padding="0"
+                          ColumnDefinitions="125, *">
+                        <Image Aspect="AspectFit"
+                               Source="{Binding Image}"
+                               WidthRequest="100"
+                               HeightRequest="100"/>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             Padding="10"
+                                             VerticalOptions="Center">
+                            <Label Text="{Binding ItemName}"/>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="£"/>
+                                        <Span Text="{Binding Price}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                        
+                    </Grid>
+                  
+                </Frame>
+            </Grid>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
         </VerticalStackLayout>
+        
+        
     </ScrollView>
 </ContentPage>
