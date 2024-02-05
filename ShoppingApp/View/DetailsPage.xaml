@@ -66,43 +66,7 @@
             </Grid>
 
 
-            <CollectionView Background="Transparent"
-                ItemsSource="{Binding Items}"
-                Grid.ColumnSpan="2"
-                Grid.Row="2"
-                SelectionMode="None">
-    <CollectionView.ItemTemplate>
-        <DataTemplate x:DataType="model:Item">
-            <Grid Padding="10">
-                <Frame HeightRequest="125">
-                    <Grid Padding="0"
-                          ColumnDefinitions="125, *">
-                        <Image Aspect="AspectFit"
-                               Source="{Binding Image}"
-                               WidthRequest="100"
-                               HeightRequest="100"/>
-
-                        <VerticalStackLayout Grid.Column="1"
-                                             Padding="10"
-                                             VerticalOptions="Center">
-                            <Label Text="{Binding ItemName}"/>
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="£"/>
-                                        <Span Text="{Binding Price}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </VerticalStackLayout>
-                        
-                    </Grid>
-                  
-                </Frame>
-            </Grid>
-        </DataTemplate>
-    </CollectionView.ItemTemplate>
-</CollectionView>
+            
         </VerticalStackLayout>
         
         

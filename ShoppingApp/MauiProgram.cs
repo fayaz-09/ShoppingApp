@@ -25,9 +25,12 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<ItemViewModel>();
         builder.Services.AddTransient<ItemDetailsViewModel>();
+        builder.Services.AddSingleton<CartViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<DetailsPage>();
+        builder.Services.AddSingleton<ItemsPage>();
+        builder.Services.AddSingleton<CartPage>();
 
         return builder.Build();
     }

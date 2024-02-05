@@ -7,7 +7,9 @@
              Title="{Binding Title}"
              x:Class="ShoppingApp.View.MainPage">
 
-    <ScrollView>
+    <Grid RowDefinitions="*,auto"
+          RowSpacing="5">
+    <ScrollView Grid.Row="0">
     <Grid ColumnDefinitions="*,*" 
           ColumnSpacing="5"
           RowDefinitions="auto,auto,*,Auto,Auto,auto, auto, auto"
@@ -112,46 +114,9 @@
 
             <Button Text="View all items"
                     Grid.Row="3"
-                    Grid.ColumnSpan="2"/>
-
-            <!--<CollectionView Background="Transparent"
-                        ItemsSource="{Binding Items}"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="2"
-                        SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Item">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="125">
-                            <Grid Padding="0"
-                                  ColumnDefinitions="125, *">
-                                <Image Aspect="AspectFit"
-                                       Source="{Binding Image}"
-                                       WidthRequest="100"
-                                       HeightRequest="100"/>
-
-                                <VerticalStackLayout Grid.Column="1"
-                                                     Padding="10"
-                                                     VerticalOptions="Center">
-                                    <Label Text="{Binding ItemName}"/>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="£"/>
-                                                <Span Text="{Binding Price}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </VerticalStackLayout>
-                                
-                            </Grid>
-                          
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
-
+                    Grid.ColumnSpan="2"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToAllCommand}"/>
 
             <Label Text="Sale items"
                    Grid.Row="4"/>
@@ -227,14 +192,31 @@
                 </Frame>
             </Grid>
 
-            <ActivityIndicator IsVisible="{Binding IsBusy}"
+            <!--<ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand"
                            Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"/>
+                           Grid.ColumnSpan="2"/>-->
 
     </Grid>
     </ScrollView>
+
+        <Grid Grid.Row="1"
+              HeightRequest="50"
+              BackgroundColor="Beige"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="5"
+              Padding="10">
+            <Button Text="Home"
+                    Padding="0"
+                    Grid.Column="0"/>
+            <Button Text="Cart"
+                    Padding="0"
+                    Grid.Column="1"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCartCommand}"/>
+        </Grid>
+    </Grid>
     
 </ContentPage>

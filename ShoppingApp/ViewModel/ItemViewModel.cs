@@ -33,6 +33,23 @@ public partial class ItemViewModel : BaseViewModel
     }
 
     [RelayCommand]
+    async Task GoToAllAsync()
+    {
+        
+        await Shell.Current.GoToAsync($"{nameof(ItemsPage)}");
+
+    }
+
+    [RelayCommand]
+    async Task GoToCartAsync()
+    {
+
+        await Shell.Current.GoToAsync($"{nameof(CartPage)}");
+
+    }
+
+
+    [RelayCommand]
     async Task GetItemsAsync()
     {
         if (IsBusy)
