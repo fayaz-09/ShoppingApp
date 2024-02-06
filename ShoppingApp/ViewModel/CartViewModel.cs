@@ -14,6 +14,14 @@ public partial class CartViewModel : BaseViewModel
     }
 
     [RelayCommand]
+    async Task GoToHomeAsync()
+    {
+
+        await Shell.Current.GoToAsync($"///{nameof(MainPage)}");
+
+    }
+
+    [RelayCommand]
     async Task GetCartItemsAsync()
     {
         if (IsBusy)
@@ -43,5 +51,42 @@ public partial class CartViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    [RelayCommand]
+    async Task RemoveCartItemAsync(string itemName)
+    {
+        if (IsBusy)
+            return;
+
+        try
+        {
+            shopService.RemoveFromCart(itemName);
+            
+            IsBusy = true;
+            var cartItems = shopService.GetCartItems();
+
+            if (CartItems.Count != 0)
+            {
+                CartItems.Clear();
+            }
+
+            foreach (var item in cartItems)
+                CartItems.Add(item);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("Error!", "Unable to get items", "ok");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    public float getTotal()
+    {
+        return shopService.GetCartTotal();
     }
 }

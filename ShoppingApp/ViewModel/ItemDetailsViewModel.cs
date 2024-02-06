@@ -6,15 +6,33 @@ namespace ShoppingApp.ViewModel;
 public partial class ItemDetailsViewModel : BaseViewModel
 {
     ShopService shopService;
+    int Quantity;
     public ObservableCollection<Item> Items { get; } = new();
      
     public ItemDetailsViewModel(ShopService shopService)
     {
         this.shopService = shopService;
+        Quantity = 0;
     }
 
     [ObservableProperty]
     Item item;
+
+    [RelayCommand]
+    async Task GoToHomeAsync()
+    {
+
+        await Shell.Current.GoToAsync($"///{nameof(MainPage)}");
+
+    }
+
+    [RelayCommand]
+    async Task GoToCartAsync()
+    {
+
+        await Shell.Current.GoToAsync($"{nameof(CartPage)}");
+
+    }
 
     [RelayCommand]
     async Task GetItemsAsync()
@@ -58,7 +76,12 @@ public partial class ItemDetailsViewModel : BaseViewModel
         {
 
             IsBusy = true;
-            shopService.AddToCart(item, 1);
+            if (Quantity > 0)
+            {
+                shopService.AddToCart(item, Quantity);
+            }
+            else
+                shopService.AddToCart(item, 1);
         }
         catch (Exception ex)
         {
@@ -69,5 +92,10 @@ public partial class ItemDetailsViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    public void changeQuantity(int quantity)
+    {
+        Quantity = quantity;
     }
 }

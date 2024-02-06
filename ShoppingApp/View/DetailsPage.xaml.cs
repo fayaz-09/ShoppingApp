@@ -13,4 +13,15 @@ public partial class DetailsPage : ContentPage
     {
         base.OnNavigatedTo(args);
     }
+
+    protected void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int index = picker.SelectedIndex;
+
+        if (index != -1)
+        {
+            (BindingContext as ItemDetailsViewModel).changeQuantity((int)picker.ItemsSource[index]);
+        }
+    }
 }

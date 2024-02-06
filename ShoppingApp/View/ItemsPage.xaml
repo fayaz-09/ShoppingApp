@@ -6,49 +6,69 @@
              xmlns:model="clr-namespace:ShoppingApp.Model"
              xmlns:viewmodel="clr-namespace:ShoppingApp.ViewModel"
              x:DataType="viewmodel:ItemViewModel">
-    
-    <ScrollView>
-        <CollectionView Background="Transparent"
+
+    <Grid RowDefinitions="*,auto"
+          RowSpacing="5">
+        <ScrollView Grid.Row="0">
+            <CollectionView Background="Transparent"
                 ItemsSource="{Binding Items}"
                 Grid.ColumnSpan="2"
                 Grid.Row="2"
                 SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Item">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="125">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Item">
+                        <Grid Padding="10">
+                            <Frame HeightRequest="125">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToDetailsCommand}"/>
-                            </Frame.GestureRecognizers>
-                            <Grid Padding="0"
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0"
                                   ColumnDefinitions="125, *">
-                                <Image Aspect="AspectFit"
+                                    <Image Aspect="AspectFit"
                                        Source="{Binding Image}"
                                        WidthRequest="100"
                                        HeightRequest="100"/>
 
-                                <VerticalStackLayout Grid.Column="1"
+                                    <VerticalStackLayout Grid.Column="1"
                                              Padding="10"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding ItemName}"/>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="£"/>
-                                                <Span Text="{Binding Price}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </VerticalStackLayout>
+                                        <Label Text="{Binding ItemName}"/>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="£"/>
+                                                    <Span Text="{Binding Price}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </VerticalStackLayout>
 
-                            </Grid>
+                                </Grid>
 
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </ScrollView>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Grid Grid.Row="1"
+              HeightRequest="50"
+              BackgroundColor="Beige"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="5"
+              Padding="10">
+            <Button Text="Home"
+                    Padding="0"
+                    Grid.Column="0"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToHomeCommand}"/>
+            <Button Text="Cart"
+                    Padding="0"
+                    Grid.Column="1"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCartCommand}"/>
+        </Grid>
+    </Grid>
 
 </ContentPage>

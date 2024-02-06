@@ -2,6 +2,7 @@ namespace ShoppingApp.View;
 
 public partial class CartPage : ContentPage
 {
+    public float total = 0;
 	public CartPage(CartViewModel cartModel)
 	{
 		InitializeComponent();
@@ -18,6 +19,7 @@ public partial class CartPage : ContentPage
     {
         base.OnAppearing();
         (BindingContext as CartViewModel).GetCartItemsCommand.Execute(this);
+        total = (BindingContext as CartViewModel).getTotal();
     }
 
 }

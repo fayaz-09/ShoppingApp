@@ -48,6 +48,14 @@ public partial class ItemViewModel : BaseViewModel
 
     }
 
+    [RelayCommand]
+    async Task GoToHomeAsync()
+    {
+
+        await Shell.Current.GoToAsync($"///{nameof(MainPage)}");
+
+    }
+
 
     [RelayCommand]
     async Task GetItemsAsync()

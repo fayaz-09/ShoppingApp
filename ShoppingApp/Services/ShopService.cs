@@ -60,25 +60,46 @@ public class ShopService
 
     public void AddToCart(Item item, int quantity)
     {
-        CartItem cartItem = new CartItem ();
-        cartItem.ItemName = item.ItemName;
-        cartItem.Image = item.Image;
-        cartItem.Price = item.Price;
-        cartItem.Quantity = quantity;
-        cartItems.Add(cartItem);
+        var location = cartItems.FindIndex(x => x.ItemName.Contains(item.ItemName));
+        if (location != -1) 
+        {
+            cartItems[location].Quantity = quantity;
+        }
+        else
+        {
+            CartItem cartItem = new CartItem();
+            cartItem.ItemName = item.ItemName;
+            cartItem.Image = item.Image;
+            cartItem.Price = item.Price;
+            cartItem.Quantity = quantity;
+            cartItems.Add(cartItem);
+        }
     }
 
-    public void RemoveFromCart(CartItem item)
+    public void RemoveFromCart(string itemName)
     {
-        var location = cartItems.Find(x => x.ItemName.Contains(item.ItemName));
-        if (location != null) 
+        var location = cartItems.FindIndex(x => x.ItemName.Contains(itemName));
+        if (location != -1) 
         {
-            cartItems.Remove(location);
+            cartItems.RemoveAt(location);
         }
     }
 
     public List<CartItem> GetCartItems()
     {
         return cartItems;
+    }
+
+    public float GetCartTotal()
+    {
+        float total = 0;
+
+        for (int i = 0; i < cartItems.Count; i++)
+        {
+            float price = cartItems[i].Price * cartItems[i].Quantity;
+            total += price;
+        }
+
+        return total;
     }
 }

@@ -7,68 +7,88 @@
              x:DataType="viewmodel:ItemDetailsViewModel"
              Title="{Binding Title}">
 
-    
-    <ScrollView>
-        <VerticalStackLayout>
-            <Grid RowDefinitions="Auto,Auto, Auto, Auto, Auto, Auto, Auto"
+    <Grid RowDefinitions="*,auto"
+          RowSpacing="5">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout>
+                <Grid RowDefinitions="Auto,Auto, Auto, Auto, Auto, Auto, Auto"
                   RowSpacing="5"
                   Padding="20"
                   ColumnDefinitions="Auto, Auto, Auto">
-                <Label Text="{Binding Item.ItemName}"
+                    <Label Text="{Binding Item.ItemName}"
                        Grid.ColumnSpan="3"
                        Grid.Row="0"/>
-                <Frame Grid.Row="1"
+                    <Frame Grid.Row="1"
                        Grid.ColumnSpan="3"
                        Padding="5">
-                    <Image Source="{Binding Item.Image}"
+                        <Image Source="{Binding Item.Image}"
                            Aspect="AspectFit"/>
-                </Frame>
-                <Label Text="Product Description:"
+                    </Frame>
+                    <Label Text="Product Description:"
                        Grid.Row="2"
                        Grid.ColumnSpan="2"/>
-                <Label Text="{Binding Item.Description}"
+                    <Label Text="{Binding Item.Description}"
                        Grid.Row="3"
                        WidthRequest="300" />
-                <Label Grid.Row="4">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="£"/>
-                            <Span Text="{Binding Item.Price}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Picker x:Name="Quantity"
+                    <Label Grid.Row="4">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="£"/>
+                                <Span Text="{Binding Item.Price}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Picker x:Name="Quantity"
                         Title="Quantity"
                         Grid.Row="5"
-                        Grid.ColumnSpan="3">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:Int32}">
-                            <x:Int32>1</x:Int32>
-                            <x:Int32>2</x:Int32>
-                            <x:Int32>3</x:Int32>
-                            <x:Int32>4</x:Int32>
-                            <x:Int32>5</x:Int32>
-                            <x:Int32>6</x:Int32>
-                            <x:Int32>7</x:Int32>
-                            <x:Int32>8</x:Int32>
-                            <x:Int32>9</x:Int32>
-                            <x:Int32>10</x:Int32>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                        Grid.ColumnSpan="3"
+                            SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:Int32}">
+                                <x:Int32>1</x:Int32>
+                                <x:Int32>2</x:Int32>
+                                <x:Int32>3</x:Int32>
+                                <x:Int32>4</x:Int32>
+                                <x:Int32>5</x:Int32>
+                                <x:Int32>6</x:Int32>
+                                <x:Int32>7</x:Int32>
+                                <x:Int32>8</x:Int32>
+                                <x:Int32>9</x:Int32>
+                                <x:Int32>10</x:Int32>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
 
-                <Button Text="Add to basket"
+                    <Button Text="Add to Cart"
                         Grid.Row="6"
                         Grid.ColumnSpan="3"
                         Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:ItemDetailsViewModel}} ,Path=addToBasketCommand}"
                         CommandParameter="{Binding Item}"/>
-                
-            </Grid>
+
+                </Grid>
 
 
-            
-        </VerticalStackLayout>
-        
-        
-    </ScrollView>
+
+            </VerticalStackLayout>
+
+
+        </ScrollView>
+        <Grid Grid.Row="1"
+              HeightRequest="50"
+              BackgroundColor="Beige"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="5"
+              Padding="10">
+            <Button Text="Home"
+                    Padding="0"
+                    Grid.Column="0"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemDetailsViewModel}}, Path=GoToHomeCommand}"/>
+            <Button Text="Cart"
+                    Padding="0"
+                    Grid.Column="1"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemDetailsViewModel}}, Path=GoToCartCommand}"/>
+        </Grid>
+    </Grid>
 </ContentPage>
