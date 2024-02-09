@@ -10,58 +10,62 @@
     <Grid RowDefinitions="*,auto"
           RowSpacing="5">
         <ScrollView Grid.Row="0">
-            <CollectionView Background="Transparent"
-            ItemsSource="{Binding CartItems}"
-            Grid.ColumnSpan="2"
-            Grid.Row="2"
-            SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:CartItem">
-                        <Grid Padding="10">
-                            <Frame HeightRequest="155">
-                                <Grid Padding="0"
+            <Grid RowDefinitions="*,auto">
+                <CollectionView Background="Transparent"
+                                ItemsSource="{Binding CartItems}"
+                                Grid.ColumnSpan="2"
+                                Grid.Row="0"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:CartItem">
+                            <Grid Padding="10">
+                                <Frame HeightRequest="155">
+                                    <Grid Padding="0"
                               ColumnDefinitions="125, *">
-                                    <Image Aspect="AspectFit"
+                                        <Image Aspect="AspectFit"
                                    Source="{Binding Image}"
                                    WidthRequest="100"
                                    HeightRequest="100"/>
 
-                                    <VerticalStackLayout Grid.Column="1"
+                                        <VerticalStackLayout Grid.Column="1"
                                          Padding="10"
                                          VerticalOptions="Center">
-                                        <Label Text="{Binding ItemName}"/>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="£"/>
-                                                    <Span Text="{Binding Price}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Quantity: "/>
-                                                    <Span Text="{Binding Quantity}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Button Text="Remove"
+                                            <Label Text="{Binding ItemName}"/>
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="£"/>
+                                                        <Span Text="{Binding Price}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Quantity: "/>
+                                                        <Span Text="{Binding Quantity}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button Text="Remove"
                                                 FontSize="10"
                                                 Padding="0"
                                                 BackgroundColor="Red"
                                                 HeightRequest="15"
                                                 CommandParameter="{Binding ItemName}"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CartViewModel}}, Path=RemoveCartItemCommand}"/>
-                                    </VerticalStackLayout>
+                                        </VerticalStackLayout>
 
-                                </Grid>
+                                    </Grid>
 
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="{Binding CartTotal}"
+                       Grid.Row="1"/>
+            </Grid>
 
         </ScrollView>
 

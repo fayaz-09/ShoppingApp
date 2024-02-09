@@ -7,6 +7,8 @@ public partial class CartViewModel : BaseViewModel
     ShopService shopService;
 
     public ObservableCollection<CartItem> CartItems { get; } = new();
+    [ObservableProperty]
+    float cartTotal = 0;
     public CartViewModel(ShopService shopService)
     {
         Title = "Cart";
@@ -73,6 +75,8 @@ public partial class CartViewModel : BaseViewModel
 
             foreach (var item in cartItems)
                 CartItems.Add(item);
+
+            CartTotal = shopService.GetCartTotal();
         }
         catch (Exception ex)
         {
@@ -85,8 +89,8 @@ public partial class CartViewModel : BaseViewModel
         }
     }
 
-    public float getTotal()
+    public void getTotal()
     {
-        return shopService.GetCartTotal();
+        CartTotal = shopService.GetCartTotal();
     }
 }
