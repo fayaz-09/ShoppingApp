@@ -10,7 +10,9 @@
     <Grid RowDefinitions="*,auto"
           RowSpacing="5">
         <ScrollView Grid.Row="0">
-            <Grid RowDefinitions="*,auto">
+            <Grid RowDefinitions="*,auto"
+                  ColumnDefinitions="*,*"
+                  Padding="5">
                 <CollectionView Background="Transparent"
                                 ItemsSource="{Binding CartItems}"
                                 Grid.ColumnSpan="2"
@@ -18,7 +20,7 @@
                                 SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:CartItem">
-                            <Grid Padding="10">
+                            <Grid Padding="10, 4">
                                 <Frame HeightRequest="155">
                                     <Grid Padding="0"
                               ColumnDefinitions="125, *">
@@ -63,8 +65,15 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <Label Text="{Binding CartTotal}"
-                       Grid.Row="1"/>
+                <Label Grid.Row="1"
+                       Grid.Column="1">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Total: £"/>
+                            <Span Text="{Binding CartTotal}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </Grid>
 
         </ScrollView>
