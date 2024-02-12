@@ -29,7 +29,21 @@ public partial class ItemViewModel : BaseViewModel
             {
                 {"Item", item}
             });
+    }
 
+    [RelayCommand]
+    async Task GoToCategoryAsync(string category)
+    {
+        if (category is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync($"{nameof(CatPage)}", true,
+            new Dictionary<string, object>
+            {
+                {"Category", category}
+            });
     }
 
     [RelayCommand]
