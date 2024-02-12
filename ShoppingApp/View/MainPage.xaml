@@ -170,7 +170,7 @@
                             <TapGestureRecognizer CommandParameter="Cereal"
                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
                         </Frame.GestureRecognizers>
-                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/weetabix.jpg"
+                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/cerealCat2.jpg"
                            Aspect="Fill"/>
                 </Frame>
                 <Frame HeightRequest="100"
@@ -181,7 +181,7 @@
                             <TapGestureRecognizer CommandParameter="Milk"
                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
                         </Frame.GestureRecognizers>
-                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/weetabix.jpg"
+                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/milkCat.jpg"
                            Aspect="Fill"/>
                 </Frame>
                 <Frame HeightRequest="100"
@@ -192,7 +192,7 @@
                             <TapGestureRecognizer CommandParameter="Crisps"
                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
                         </Frame.GestureRecognizers>
-                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/weetabix.jpg"
+                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/crispsCat.jpg"
                            Aspect="Fill"/>
                 </Frame>
                 <Frame HeightRequest="100"
@@ -203,7 +203,7 @@
                             <TapGestureRecognizer CommandParameter="Chocolate"
                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
                         </Frame.GestureRecognizers>
-                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/weetabix.jpg"
+                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/chocCat.jpg"
                            Aspect="Fill"/>
                 </Frame>
                     <Frame HeightRequest="100"
@@ -214,7 +214,7 @@
                             <TapGestureRecognizer CommandParameter="Fruit"
                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
                         </Frame.GestureRecognizers>
-                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/weetabix.jpg"
+                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/fruitCat.jpg"
                                Aspect="Fill"/>
                     </Frame>
                 </Grid>
