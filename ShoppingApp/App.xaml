@@ -10,7 +10,7 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <Color x:Key="Primary">beige</Color>
+            <Color x:Key="Primary">AntiqueWhite</Color>
             <Color x:Key="PrimaryDark">#FFA000</Color>
             <Color x:Key="Accent">#00BCD4</Color>
 
@@ -22,9 +22,19 @@
 
             <Color x:Key="CardBackground">white</Color>
             <Color x:Key="CardBackgroundDark">#1c1c1e</Color>
-            
-            
-            
+
+            <Style TargetType="Label" x:Key="BaseLabel">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LabelText}, Dark={StaticResource LabelTextDark}}" />
+            </Style>
+
+            <Style x:Key="HeaderLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+                <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
