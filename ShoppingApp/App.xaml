@@ -23,6 +23,8 @@
             <Color x:Key="CardBackground">white</Color>
             <Color x:Key="CardBackgroundDark">#1c1c1e</Color>
             
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

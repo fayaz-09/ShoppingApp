@@ -12,18 +12,19 @@
     <ScrollView Grid.Row="0">
     <Grid ColumnDefinitions="*,*" 
           ColumnSpacing="5"
-          RowDefinitions="auto,auto,*,Auto,Auto,auto, auto, auto"
+          RowDefinitions="auto,auto,*,auto,auto,auto, auto, auto"
           RowSpacing="5"
           Padding="10">
 
             <Frame Grid.Row="0"
                    Margin="0"
                    Grid.ColumnSpan="2"
-                   Padding="10">
+                   Padding="10"
+                   BorderColor="Transparent">
                     <Grid Padding="10"
                           RowDefinitions="*,auto">
                         <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/weetabix.jpg"
-                               Aspect="AspectFill"
+                               Aspect="Center"
                                Grid.Row="0"/>
                         <Label Text="Shop Featured Cereals"
                                Grid.Row="1"/>
@@ -78,17 +79,17 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Item">
                         <Grid Padding="10">
-                            <Frame HeightRequest="125">
+                            <Frame>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"
                                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToDetailsCommand}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid Padding="0"
-                                      ColumnDefinitions="125, *">
+                                      ColumnDefinitions="*, *"
+                                      RowDefinitions="150"
+                                      ColumnSpacing="10">
                                     <Image Aspect="AspectFit"
-                                           Source="{Binding Image}"
-                                           WidthRequest="100"
-                                           HeightRequest="100"/>
+                                           Source="{Binding Image}"/>
 
                                     <VerticalStackLayout Grid.Column="1"
                                                          Padding="10"
@@ -131,11 +132,9 @@
                             <Grid Padding="10">
                                 <Frame HeightRequest="150">
                                     <Grid Padding="0"
-                                          ColumnDefinitions="125, *">
+                                          ColumnDefinitions="*, *">
                                         <Image Aspect="AspectFit"
-                                               Source="{Binding Image}"
-                                               WidthRequest="100"
-                                               HeightRequest="100"/>
+                                               Source="{Binding Image}"/>
 
                                         <VerticalStackLayout Grid.Column="1"
                                                              Padding="10"
@@ -162,7 +161,7 @@
                   RowDefinitions="*,*,*"
                   ColumnSpacing="10"
                   RowSpacing="10">
-                <Frame HeightRequest="100"
+                <Frame
                        Grid.Column="0"
                        Grid.Row="0"
                        Padding="0">
@@ -173,7 +172,7 @@
                         <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/cerealCat2.jpg"
                            Aspect="Fill"/>
                 </Frame>
-                <Frame HeightRequest="100"
+                <Frame 
                        Grid.Column="1"
                        Grid.Row="0"
                        Padding="0">
@@ -184,7 +183,7 @@
                         <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/milkCat.jpg"
                            Aspect="Fill"/>
                 </Frame>
-                <Frame HeightRequest="100"
+                <Frame 
                        Grid.Column="0"
                        Grid.Row="1"
                        Padding="0">
@@ -195,7 +194,7 @@
                         <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/crispsCat.jpg"
                            Aspect="Fill"/>
                 </Frame>
-                <Frame HeightRequest="100"
+                <Frame 
                        Grid.Column="1"
                        Grid.Row="1"
                        Padding="0">
@@ -206,18 +205,18 @@
                         <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/chocCat.jpg"
                            Aspect="Fill"/>
                 </Frame>
-                    <Frame HeightRequest="100"
-                           Grid.Column="0"
-                           Grid.Row="2"
-                           Padding="0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="Fruit"
-                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/fruitCat.jpg"
-                               Aspect="Fill"/>
-                    </Frame>
-                </Grid>
+                <Frame 
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="Fruit"
+                                              Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/fruitCat.jpg"
+                           Aspect="Fill"/>
+                </Frame>
+            </Grid>
 
             <!--<ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
