@@ -114,13 +114,14 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Text="View all items"
+            <Button Style="{StaticResource ButtonOption}"
+                    Text="View all items"
                     Grid.Row="3"
-                    Grid.ColumnSpan="2"
                     CommandParameter="{Binding .}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToAllCommand}"/>
 
-            <Label Text="Sale items"
+            <Label Style="{StaticResource HeaderLabel}"
+                Text="Sale items"
                    Grid.Row="4"/>
             <ScrollView Orientation="Horizontal"
                         Grid.Row="5"
@@ -154,7 +155,8 @@
                 </CollectionView>
             </ScrollView>
 
-            <Label Text="Categories"
+            <Label Style="{StaticResource HeaderLabel}"
+                   Text="Categories"
                    Grid.Row="6"/>
             <Grid Grid.Row="7"
                   Grid.ColumnSpan="2"
@@ -230,16 +232,15 @@
     </ScrollView>
 
         <Grid Grid.Row="1"
-              HeightRequest="50"
               BackgroundColor="AntiqueWhite"
               ColumnDefinitions="*,*"
               ColumnSpacing="5"
-              Padding="10">
-            <Button Text="Home"
-                    Padding="0"
+              Padding="5">
+            <Button Style="{StaticResource MenuButtonActive}"
+                    ImageSource="house.svg"
                     Grid.Column="0"/>
-            <Button Text="Cart"
-                    Padding="0"
+            <Button Style="{StaticResource MenuButton}"
+                    ImageSource="cart.svg"
                     Grid.Column="1"
                     CommandParameter="{Binding .}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCartCommand}"/>

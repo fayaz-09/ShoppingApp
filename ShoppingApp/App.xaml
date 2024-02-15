@@ -35,6 +35,24 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
 
+
+            <Style x:Key="MenuButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+            <Style x:Key="MenuButtonActive" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#e1d3c1"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+            <Style x:Key="ButtonOption" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Beige"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

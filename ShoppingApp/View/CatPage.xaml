@@ -53,21 +53,20 @@
             </CollectionView>
         </ScrollView>
         <Grid Grid.Row="1"
-          HeightRequest="50"
-          BackgroundColor="Beige"
-          ColumnDefinitions="*,*"
-          ColumnSpacing="5"
-          Padding="10">
-            <Button Text="Home"
-                Padding="0"
-                Grid.Column="0"
-                CommandParameter="{Binding .}"
-                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoryViewModel}}, Path=GoToHomeCommand}"/>
-            <Button Text="Cart"
-                Padding="0"
-                Grid.Column="1"
-                CommandParameter="{Binding .}"
-                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoryViewModel}}, Path=GoToCartCommand}"/>
+              BackgroundColor="AntiqueWhite"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="5"
+              Padding="5">
+            <Button Style="{StaticResource MenuButton}"
+                    ImageSource="house.svg"
+                    Grid.Column="0"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoryViewModel}}, Path=GoToHomeCommand}"/>
+            <Button Style="{StaticResource MenuButton}"
+                    ImageSource="cart.svg"
+                    Grid.Column="1"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoryViewModel}}, Path=GoToCartCommand}"/>
         </Grid>
     </Grid>
 </ContentPage>
