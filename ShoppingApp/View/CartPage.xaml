@@ -21,17 +21,18 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:CartItem">
                             <Grid Padding="10, 4">
-                                <Frame HeightRequest="155">
+                                <Frame Style="{StaticResource ItemFrame}"
+                                       HeightRequest="155">
                                     <Grid Padding="0"
-                              ColumnDefinitions="125, *">
+                                          ColumnDefinitions="125, *">
                                         <Image Aspect="AspectFit"
-                                   Source="{Binding Image}"
-                                   WidthRequest="100"
-                                   HeightRequest="100"/>
+                                               Source="{Binding Image}"
+                                               WidthRequest="100"
+                                               HeightRequest="100"/>
 
                                         <VerticalStackLayout Grid.Column="1"
-                                         Padding="10"
-                                         VerticalOptions="Center">
+                                                             Padding="10"
+                                                             VerticalOptions="Center">
                                             <Label Text="{Binding ItemName}"/>
                                             <Label>
                                                 <Label.FormattedText>
@@ -50,12 +51,12 @@
                                                 </Label.FormattedText>
                                             </Label>
                                             <Button Text="Remove"
-                                                FontSize="10"
-                                                Padding="0"
-                                                BackgroundColor="Red"
-                                                HeightRequest="15"
-                                                CommandParameter="{Binding ItemName}"
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CartViewModel}}, Path=RemoveCartItemCommand}"/>
+                                                    FontSize="10"
+                                                    Padding="0"
+                                                    BackgroundColor="Red"
+                                                    HeightRequest="15"
+                                                    CommandParameter="{Binding ItemName}"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CartViewModel}}, Path=RemoveCartItemCommand}"/>
                                         </VerticalStackLayout>
 
                                     </Grid>

@@ -16,17 +16,22 @@
           RowSpacing="5"
           Padding="10">
 
-            <Frame Grid.Row="0"
+            <Frame Style="{StaticResource MainFrame}"
+                   Grid.Row="0"
                    Margin="0"
                    Grid.ColumnSpan="2"
-                   Padding="10"
-                   BorderColor="Transparent">
+                   Padding="10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="Cereal"
+                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToCategoryCommand}"/>
+                    </Frame.GestureRecognizers>
                     <Grid Padding="10"
                           RowDefinitions="*,auto">
                         <Image Source="https://raw.githubusercontent.com/fayaz-09/ShopAppResource/main/weetabix.jpg"
                                Aspect="Center"
                                Grid.Row="0"/>
-                        <Label Text="Shop Featured Cereals"
+                        <Label Style="{StaticResource HeaderLabel}"
+                            Text="Shop Featured Cereals"
                                Grid.Row="1"/>
                     </Grid>
             </Frame>
@@ -80,7 +85,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Item">
                         <Grid Padding="10">
-                            <Frame>
+                            <Frame Style="{StaticResource ItemFrame}">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"
                                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToDetailsCommand}"/>
@@ -133,17 +138,23 @@
                         <DataTemplate x:DataType="model:Item">
                             <Grid Padding="10">
                                 <Frame HeightRequest="150">
-                                    <Grid Padding="0"
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ItemViewModel}}, Path=GoToDetailsCommand}"/>
+                                        </Frame.GestureRecognizers>
+                                        <Grid Padding="0"
                                           ColumnDefinitions="*, *">
                                         <Image Aspect="AspectFit"
                                                Source="{Binding Image}"/>
 
                                         <VerticalStackLayout Grid.Column="1"
-                                                             Padding="10"
+                                                             Padding="5"
                                                              WidthRequest="100"
                                                              VerticalOptions="Center">
-                                            <Label Text="{Binding ItemName}"/>
-                                            <Label Text="{Binding Price}"/>
+                                            <Label Style="{StaticResource SaleLabel}"
+                                                Text="{Binding ItemName}"/>
+                                                <Label Style="{StaticResource SaleLabel}"
+                                                Text="{Binding Price}"/>
                                         </VerticalStackLayout>
 
                                     </Grid>

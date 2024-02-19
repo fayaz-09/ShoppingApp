@@ -23,18 +23,55 @@
             <Color x:Key="CardBackground">white</Color>
             <Color x:Key="CardBackgroundDark">#1c1c1e</Color>
 
+            <Style TargetType="Frame" x:Key="BaseFrame">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource CardBackground}, Dark={StaticResource CardBackgroundDark}}"/>
+            </Style>
+
+            <Style x:Key="MainFrame" BasedOn="{StaticResource BaseFrame}" TargetType="Frame">
+                <Setter Property="BorderColor" Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="ItemFrame" BasedOn="{StaticResource BaseFrame}" TargetType="Frame">
+                <Setter Property="BorderColor" Value="AntiqueWhite"/>
+            </Style>
+
             <Style TargetType="Label" x:Key="BaseLabel">
                 <Setter Property="FontFamily" Value="OpenSansRegular" />
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LabelText}, Dark={StaticResource LabelTextDark}}" />
             </Style>
 
-            <Style x:Key="HeaderLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
+            <Style x:Key="HeaderLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="25"/>
                 <Setter Property="Grid.ColumnSpan" Value="2"/>
                 <Setter Property="BackgroundColor" Value="AntiqueWhite"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
 
+            <Style x:Key="DetailsHeaderLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Grid.ColumnSpan" Value="3"/>
+                <Setter Property="WidthRequest" Value="350"/>
+            </Style>
+
+            <Style x:Key="DescriptionHeaderLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            </Style>
+
+            <Style x:Key="DescriptionLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Grid.ColumnSpan" Value="1"/>
+                <Setter Property="WidthRequest" Value="300"/>
+            </Style>
+
+            <Style x:Key="SaleLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="Grid.ColumnSpan" Value="1"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
 
             <Style x:Key="MenuButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="AntiqueWhite"/>

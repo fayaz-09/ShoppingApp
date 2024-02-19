@@ -15,22 +15,23 @@
                   RowSpacing="5"
                   Padding="20"
                   ColumnDefinitions="Auto, Auto, Auto">
-                    <Label Text="{Binding Item.ItemName}"
-                       Grid.ColumnSpan="3"
-                       Grid.Row="0"/>
+                    <Label Style="{StaticResource DetailsHeaderLabel}"
+                           Text="{Binding Item.ItemName}"
+                           Grid.Row="0"/>
                     <Frame Grid.Row="1"
                        Grid.ColumnSpan="3"
                        Padding="5">
                         <Image Source="{Binding Item.Image}"
                            Aspect="AspectFit"/>
                     </Frame>
-                    <Label Text="Product Description:"
-                       Grid.Row="2"
-                       Grid.ColumnSpan="2"/>
-                    <Label Text="{Binding Item.Description}"
-                       Grid.Row="3"
-                       WidthRequest="300" />
-                    <Label Grid.Row="4">
+                    <Label  Style="{StaticResource DescriptionHeaderLabel}" 
+                        Text="Product Description:"
+                       Grid.Row="2"/>
+                    <Label Style="{StaticResource DescriptionLabel}"
+                        Text="{Binding Item.Description}"
+                       Grid.Row="3" />
+                    <Label Style="{StaticResource DescriptionLabel}"
+                        Grid.Row="4">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="£"/>
