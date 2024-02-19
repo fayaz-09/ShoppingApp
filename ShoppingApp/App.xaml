@@ -23,6 +23,9 @@
             <Color x:Key="CardBackground">white</Color>
             <Color x:Key="CardBackgroundDark">#1c1c1e</Color>
 
+            <Color x:Key="FrameBorder">#1c1c1e</Color>
+            <Color x:Key="FrameBorderDark">antiquewhite</Color>
+
             <Style TargetType="Frame" x:Key="BaseFrame">
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource CardBackground}, Dark={StaticResource CardBackgroundDark}}"/>
             </Style>
@@ -32,7 +35,7 @@
             </Style>
 
             <Style x:Key="ItemFrame" BasedOn="{StaticResource BaseFrame}" TargetType="Frame">
-                <Setter Property="BorderColor" Value="AntiqueWhite"/>
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource FrameBorder}, Dark={StaticResource FrameBorderDark}}"/>
             </Style>
 
             <Style TargetType="Label" x:Key="BaseLabel">

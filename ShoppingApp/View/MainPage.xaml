@@ -153,9 +153,15 @@
                                                              VerticalOptions="Center">
                                             <Label Style="{StaticResource SaleLabel}"
                                                 Text="{Binding ItemName}"/>
-                                                <Label Style="{StaticResource SaleLabel}"
-                                                Text="{Binding Price}"/>
-                                        </VerticalStackLayout>
+                                                <Label Style="{StaticResource SaleLabel}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="£"/>
+                                                            <Span Text="{Binding Price}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </VerticalStackLayout>
 
                                     </Grid>
 
